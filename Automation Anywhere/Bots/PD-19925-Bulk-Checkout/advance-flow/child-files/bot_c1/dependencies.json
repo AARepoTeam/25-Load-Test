@@ -1,1 +1,1 @@
-{"path":"Automation Anywhere\\Bots\\PD-19925-Bulk-Checkout\\advance-flow\\child-files\\c1","manualDependencies":[],"scannedDependencies":[]}
+{"path":"Automation Anywhere\\Bots\\PD-19925-Bulk-Checkout\\advance-flow\\child-files\\c1","manualDependencies":["Automation Anywhere\\Bots\\PD-19925-Bulk-Checkout\\advance-flow\\child-files\\c2"],"scannedDependencies":[]}
