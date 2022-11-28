@@ -1,0 +1,308 @@
+/**
+ * Copyright (c) 2020 Automation Anywhere.
+ * All rights reserved.
+ *
+ * This software is the proprietary information of Automation Anywhere.
+ * You shall use it only in accordance with the terms of the license agreement
+ * you entered into with Automation Anywhere.
+ */
+import React, {memo, useMemo, useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {Loadable, useApiCallback, useValueRef, TextField, CommandButton, Prompt, Alert, Help} from 'common-frontend-components';
+import {Field, Form} from 'react-final-form';
+
+import {routerPush} from '../../../../store/actions/router';
+import {formValueSet} from '../../../../store/actions/repositories';
+import {validate} from '../../../../store/forms/repositoryBatchCheckIn';
+import {FileType} from '../FileType';
+import {selectT} from '../../../../store/selectors/i18n';
+import {create as toastCreate} from '../../../../store/actions/toasts';
+import {batchCheckOutFiles, getNearestFolder} from '../../../../store/api/repositories';
+import {renderErrorAlert} from '../../../../util/error';
+import {selectModuleFileTypes} from '../../../../store/selectors/modules';
+import {STATUS_CLONED, WORKSPACE_PUBLIC} from '../../../../store/constants/repositories';
+import {useFormWardenCallback} from '../../../hooks/formWardenCallback';
+
+import {RepositoryBatchCheckInValidation} from './RepositoryBatchCheckInValidation';
+
+const MAXIMUM_FILES = 10;
+
+let RepositoryActionBatchCheckOut = (props) => {
+
+    console.log("HELLO CHECKOUT!!!");
+
+    const {files, onHide, onError, onDone} = props;
+    const onDoneRef = useValueRef(onDone);
+    const t = useSelector(selectT);
+    const [isValidating, setIsValidating] = useState(false);
+    const [isValidatingVisible, setIsValidatingVisible] = useState(false);
+    const moduleFileTypes = useSelector(selectModuleFileTypes);
+    const dispatch = useDispatch();
+
+    const [filesMap, items, invalidFilesError] = useMemo(() => {
+
+        if (!files || !files.length) {
+            return [null, null, {
+                title: t('repository:file-batch-check-out-files-zero-length-error-title'),
+                body: t('repository:file-batch-check-out-files-zero-length-error-body'),
+            }];
+        }
+        const filesMap = files.reduce((result, file) => {
+            console.log({file});
+            if  ( /* !file.permission?.upload   ||*/ file.hasErrors || file.folder) {
+                result.invalidFiles.push(file);
+            }
+            else if (result.validFiles.length >= MAXIMUM_FILES) {
+                console.log('HERE..............');
+                result.overflowFiles.push(file);
+            }
+            else {
+                result.validFiles.push(file);
+            }
+            return result;
+        }, {
+            validFiles: [],
+            invalidFiles: [],
+            overflowFiles: [],
+        });
+        //Validating only folders
+        if (filesMap.invalidFiles.length > 1 && filesMap.validFiles.length === 0) {
+            const isFolder = filesMap.invalidFiles.find((file) => file.folder);
+            if (isFolder) {
+                return [null, null, {
+                    title: t('repository:file-batch-check-out-folders-error-title'),
+                    body: t('repository:file-batch-check-out-folders-error-body'),
+                }];
+            }
+        }
+        //validating individiual files for errors
+        if (filesMap.invalidFiles.length === 1 && filesMap.validFiles.length === 0) {
+            const [file] = filesMap.invalidFiles;
+            console.log("NEXT");
+            console.log({file});
+            if (file.folder) {
+                return [null, null, {
+                    title: t('repository:file-batch-check-out-files-folder-error-title'),
+                    body: t('repository:file-batch-check-out-files-folder-error-body'),
+                }];
+            }
+            if (file.hasErrors) {
+                return [null, null, {
+                    title: t('repository:file-batch-check-out-all-file-has-error-title'),
+                    body: t('repository:file-batch-check-out-all-file-has-error-body'),
+                }];
+            }
+
+            //check with Gabe which permission we should check for checkout
+
+               if (!file.permission?.upload) {
+                return [null, null, {
+                    title: t('repository:file-batch-check-out-invalid-bot-status-title'),
+                    body: t('repository:file-batch-check-out-invalid-bot-status-body'),
+                }];
+            } 
+            return [null, null, {
+                title: t('repository:file-batch-check-out-permission-generic-title'),
+                body: t('repository:file-batch-check-out-permission-generic-message'),
+            }];
+        }
+        const items = [];
+        if (filesMap.validFiles.length) {
+            items.push({
+                header: filesMap.overflowFiles.length > 0
+                    ? t('repository:file-batch-check-out-valid-header--overflow', {count: filesMap.validFiles.length})
+                    : t('repository:file-batch-check-out-valid-header', {count: filesMap.validFiles.length}),
+            });
+            filesMap.validFiles.forEach((file) => items.push({
+                label: file.name,
+                icon: (
+                    <FileType
+                        value={file.name}
+                        file={file}
+                        moduleFileTypes={moduleFileTypes}
+                    />
+                ),
+            }));
+        }
+        if (filesMap.invalidFiles.length > 0) {
+            items.push({
+                header: t('repository:file-batch-check-out-invalid-header', {count: filesMap.invalidFiles.length}),
+            });
+            filesMap.invalidFiles.forEach((file) => items.push({
+                label: file.name,
+                icon: (
+                    <FileType
+                        value={file.name}
+                        file={file}
+                        moduleFileTypes={moduleFileTypes}
+                    />
+                ),
+            }));
+        }
+        return [filesMap, items];
+    }, [files]);
+
+    const initialValues = useMemo(() => {
+        return {
+            fileIds: filesMap?.validFiles?.length > 0 ? filesMap.validFiles.map((bot) => bot.id) : [],
+        };
+    }, [files]);
+
+
+    if (filesMap?.validFiles?.length === 0 && filesMap?.invalidFiles?.length > 1) {
+        return (
+            <Alert
+                theme="error"
+                key="errorMessage"
+                title={t('repository:file-batch-check-out-individual-file-error-title')}
+                labelOk={t('action-close')}
+                onHide={onHide}
+                show
+            >
+                {t('repository:file-batch-check-out-individual-file-error-body')}
+            </Alert>
+        );
+    }
+    
+    const [submitClosing, handleSubmitClose] = useFormWardenCallback((nearestFolder) => {
+        if (nearestFolder) {
+            dispatch(routerPush(`/bots/repository/public/folders/${nearestFolder.id}`));
+        }
+        else {
+            dispatch(routerPush('/bots/repository/public'));
+        }
+    });
+    const [submitCallback, submitPending, submitError] = useApiCallback(async(signal, formValues) => {
+        await batchCheckOutFiles(signal, formValues.fileIds);
+        const firstFile = files.find((file) => file.id === formValues.fileIds[0]);
+        if (formValues.fileIds.length === 1) {
+            dispatch(toastCreate({
+                title: firstFile.name,
+                message: t('repository:file-batch-check-out-file-toast-message'),
+            }));
+        }
+        else {
+            dispatch(toastCreate({
+                title: t('resource-count', {count: formValues.fileIds.length, resource: 'items'}),
+                message: t('repository:file-batch-check-out-file-toast-message'),
+            }));
+        }
+        try {
+            const nearestFolder = await getNearestFolder(signal, WORKSPACE_PUBLIC, firstFile.path);
+            handleSubmitClose(nearestFolder);
+        }
+        catch (error) {
+            handleSubmitClose();
+        }
+        if (onDoneRef.current) {
+            onDoneRef.current();
+        }
+    }, [files]);
+
+    if (invalidFilesError) {
+        return renderErrorAlert(t, invalidFilesError, onError);
+    }
+    if (submitError) {
+        return renderErrorAlert(t, submitError, onHide);
+    }
+
+    let title, body, help;
+    if (filesMap) {
+        if (filesMap.invalidFiles.length) {
+            title = t('repository:file-batch-check-out-ignore-bulk');
+            body = t('repository:file-batch-check-out-message-ignore-bulk');
+        }
+        else {
+            title = t('repository:file-batch-check-out-title', {
+                count: filesMap.validFiles.length,
+                itemPlural: t('resource-file', {count: filesMap.validFiles.length}),
+            });
+            body = t('repository:file-batch-check-out-body');
+        }
+        if (filesMap.overflowFiles.length > 0) {
+            help = t('repository:file-batch-check-out-overflow', {maximum: MAXIMUM_FILES});
+        }
+    }
+
+    return (
+        <Form
+            initialValues={initialValues}
+            onSubmit={() => {}}
+            loading={submitPending}
+            validate={(values) => validate(values, {t})}
+            render={({invalid, form}) => {
+                let validation = null;
+                if (isValidating) {
+                    const {fileIds} = form.getState().values;
+                    const fileIdSet = new Set(fileIds);
+                    validation = (
+                        <RepositoryBatchCheckInValidation
+                            files={files.filter((file) => fileIdSet.has(file.id))}
+                            onContinue={invalid ? null : (fileIds) => {
+                                setIsValidating(false);
+                                submitCallback({fileIds});
+                            }}
+                            onShow={() => {
+                                setIsValidatingVisible(true);
+                            }}
+                            onCancel={onHide}
+                        />
+                    );
+                }
+                return (
+                    <>
+                        {validation}
+                        {!(isValidating && isValidatingVisible) && (
+                            <Prompt
+                                theme="info"
+                                title={title}
+                                items={items}
+                                labelCancel={t('action-cancel')}
+                                labelSubmit={t('roles:bots-permission-checkOut')}
+                                onHide={!onHide ? false : onHide}
+                                onSubmit={invalid || submitPending || isValidating ? null : () => {
+                                    setIsValidating(true);
+                                    setIsValidatingVisible(false);
+                                }}
+                                show={true}
+                            >
+                                <Loadable
+                                    working={Boolean(submitPending || isValidating)}
+                                    loading={Boolean(submitPending || submitError || submitClosing)}
+                                    labelAltLoading={t('loading')} labelAltWorking={t('loading')}
+                                >
+                                    {body ? (
+                                        <Help>{body}</Help>
+                                    ) : null}
+                                    {help ? (
+                                        <Help>{help}</Help>
+                                    ) : null}
+                                    <br/>
+                                    <br/>
+                                    <div className="file-batchCheckOut-advanced-button">
+                                        <CommandButton
+                                            theme="info"
+                                            onClick={() => {
+                                                dispatch(formValueSet('batchCheckInFileIds', filesMap.validFiles.map((file) => file.id)));
+                                                dispatch(routerPush('/bots/repository/private/files/batchCheckIn'));
+                                                onHide();
+                                            }}
+                                            disabled={submitPending || isValidating}
+                                        >
+                                            {t('repository:file-checkout-advanced-button-label')}
+                                        </CommandButton>
+                                    </div>
+                                    <br/>
+                                    <br/>
+                                </Loadable>
+                            </Prompt>
+                        )}
+                    </>
+                );
+            }}
+        />
+    );
+};
+RepositoryActionBatchCheckOut.displayName = 'RepositoryActionBatchCheckOut';
+RepositoryActionBatchCheckOut = memo(RepositoryActionBatchCheckOut);
+export {RepositoryActionBatchCheckOut};
