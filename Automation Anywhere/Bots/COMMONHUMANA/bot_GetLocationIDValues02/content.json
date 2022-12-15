@@ -11254,14 +11254,6 @@
     "version": "2.1.0-20210504-152757"
   }, {
     "id": "",
-    "name": "Comment",
-    "version": "2.6.0-20210504-152804"
-  }, {
-    "id": "",
-    "name": "Comment",
-    "version": "2.6.0-20210504-152804"
-  }, {
-    "id": "",
     "name": "DataTable",
     "version": "2.8.0-20210504-153459"
   }, {
@@ -11348,6 +11340,14 @@
     "id": "",
     "name": "MessageBox",
     "version": "3.4.0-20220416-233919"
+  }, {
+    "id": "",
+    "name": "Comment",
+    "version": "2.12.0"
+  }, {
+    "id": "",
+    "name": "Comment",
+    "version": "2.12.0"
   }],
   "triggers": [],
   "workItemTemplateName": "",
