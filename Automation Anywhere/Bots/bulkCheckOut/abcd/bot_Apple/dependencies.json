@@ -1,1 +1,1 @@
-{"path":"Automation Anywhere\\Bots\\bulkCheckOut\\abcd\\Apple","manualDependencies":[],"scannedDependencies":[]}
+{"path":"Automation Anywhere\\Bots\\bulkCheckOut\\abcd\\Apple","manualDependencies":["Automation Anywhere\\Bots\\Swati_APIBots\\Apibot_ss"],"scannedDependencies":[]}
