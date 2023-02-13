@@ -11246,14 +11246,6 @@
   }],
   "packages": [{
     "id": "",
-    "name": "Boolean",
-    "version": "2.1.0-20210504-152757"
-  }, {
-    "id": "",
-    "name": "Boolean",
-    "version": "2.1.0-20210504-152757"
-  }, {
-    "id": "",
     "name": "DataTable",
     "version": "2.8.0-20210504-153459"
   }, {
@@ -11343,11 +11335,19 @@
   }, {
     "id": "",
     "name": "Comment",
-    "version": "2.12.0"
+    "version": "2.13.2"
   }, {
     "id": "",
     "name": "Comment",
-    "version": "2.12.0"
+    "version": "2.13.2"
+  }, {
+    "id": "",
+    "name": "Boolean",
+    "version": "2.8.0"
+  }, {
+    "id": "",
+    "name": "Boolean",
+    "version": "2.8.0"
   }],
   "triggers": [],
   "workItemTemplateName": "",
