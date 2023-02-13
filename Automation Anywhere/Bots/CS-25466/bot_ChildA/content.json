@@ -1576,12 +1576,12 @@
   }],
   "packages": [{
     "id": "",
-    "name": "ImageRecognition",
-    "version": "3.11.0-20220623-052117"
-  }, {
-    "id": "",
     "name": "MessageBox",
     "version": "3.5.0-20221223-065722"
+  }, {
+    "id": "",
+    "name": "ImageRecognition",
+    "version": "3.13.1-20230106-082442"
   }],
   "triggers": [],
   "workItemTemplateName": "",
