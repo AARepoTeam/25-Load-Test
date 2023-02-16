@@ -1,65 +1,209 @@
 {
-  "nodes": [
-    {
-      "uid": "null",
-      "commandName": "messageBox",
-      "packageName": "MessageBox",
-      "attributes": [
-        {
-          "name": "closeMsgBox",
-          "value": {
-            "type": "BOOLEAN",
-            "boolean": true
-          }
-        },
-        {
-          "name": "timeOut",
-          "value": {
-            "type": "NUMBER",
-            "number": "5"
-          }
-        },
-        {
-          "name": "content",
-          "value": {
-            "type": "STRING",
-            "string": "This bot has 60 dependencies"
-          }
-        },
-        {
-          "name": "scrollLines",
-          "value": {
-            "type": "NUMBER",
-            "number": "30"
-          }
-        },
-        {
-          "name": "title",
-          "value": {
-            "type": "STRING",
-            "string": "APISanity - Test Automation Message Box"
-          }
-        }
-      ],
-      "commandId": "71",
-      "packageId": "71"
+  "nodes": [{
+    "uid": "null",
+    "packageId": "71",
+    "packageName": "MessageBox",
+    "commandId": "71",
+    "commandName": "messageBox",
+    "attributes": [{
+      "id": "",
+      "name": "closeMsgBox",
+      "value": {
+        "type": "BOOLEAN",
+        "expression": "",
+        "string": "",
+        "number": "",
+        "boolean": "true",
+        "repository": "",
+        "variableName": "",
+        "packageId": "",
+        "packageName": "",
+        "iteratorId": "",
+        "iteratorName": "",
+        "conditionalId": "",
+        "conditionalName": "",
+        "list": [],
+        "dictionary": [],
+        "exceptionName": "",
+        "thumbnailMetadataPath": "",
+        "screenshotMetadataPath": "",
+        "properties": [],
+        "triggerName": "",
+        "formElementId": "",
+        "formElementType": "",
+        "formInstanceId": "",
+        "queueName": "",
+        "taskbotSelf": false,
+        "variableMapFilter": [],
+        "sessionTarget": "NONE",
+        "securelyRecorded": false
+      },
+      "attributes": [],
+      "operator": "NONE"
+    }, {
+      "id": "",
+      "name": "timeOut",
+      "value": {
+        "type": "NUMBER",
+        "expression": "",
+        "string": "",
+        "number": "5",
+        "boolean": "",
+        "repository": "",
+        "variableName": "",
+        "packageId": "",
+        "packageName": "",
+        "iteratorId": "",
+        "iteratorName": "",
+        "conditionalId": "",
+        "conditionalName": "",
+        "list": [],
+        "dictionary": [],
+        "exceptionName": "",
+        "thumbnailMetadataPath": "",
+        "screenshotMetadataPath": "",
+        "properties": [],
+        "triggerName": "",
+        "formElementId": "",
+        "formElementType": "",
+        "formInstanceId": "",
+        "queueName": "",
+        "taskbotSelf": false,
+        "variableMapFilter": [],
+        "sessionTarget": "NONE",
+        "securelyRecorded": false
+      },
+      "attributes": [],
+      "operator": "NONE"
+    }, {
+      "id": "",
+      "name": "content",
+      "value": {
+        "type": "STRING",
+        "expression": "",
+        "string": "This bot has 60 dependencies",
+        "number": "",
+        "boolean": "",
+        "repository": "",
+        "variableName": "",
+        "packageId": "",
+        "packageName": "",
+        "iteratorId": "",
+        "iteratorName": "",
+        "conditionalId": "",
+        "conditionalName": "",
+        "list": [],
+        "dictionary": [],
+        "exceptionName": "",
+        "thumbnailMetadataPath": "",
+        "screenshotMetadataPath": "",
+        "properties": [],
+        "triggerName": "",
+        "formElementId": "",
+        "formElementType": "",
+        "formInstanceId": "",
+        "queueName": "",
+        "taskbotSelf": false,
+        "variableMapFilter": [],
+        "sessionTarget": "NONE",
+        "securelyRecorded": false
+      },
+      "attributes": [],
+      "operator": "NONE"
+    }, {
+      "id": "",
+      "name": "scrollLines",
+      "value": {
+        "type": "NUMBER",
+        "expression": "",
+        "string": "",
+        "number": "30",
+        "boolean": "",
+        "repository": "",
+        "variableName": "",
+        "packageId": "",
+        "packageName": "",
+        "iteratorId": "",
+        "iteratorName": "",
+        "conditionalId": "",
+        "conditionalName": "",
+        "list": [],
+        "dictionary": [],
+        "exceptionName": "",
+        "thumbnailMetadataPath": "",
+        "screenshotMetadataPath": "",
+        "properties": [],
+        "triggerName": "",
+        "formElementId": "",
+        "formElementType": "",
+        "formInstanceId": "",
+        "queueName": "",
+        "taskbotSelf": false,
+        "variableMapFilter": [],
+        "sessionTarget": "NONE",
+        "securelyRecorded": false
+      },
+      "attributes": [],
+      "operator": "NONE"
+    }, {
+      "id": "",
+      "name": "title",
+      "value": {
+        "type": "STRING",
+        "expression": "",
+        "string": "APISanity - Test Automation Message Box",
+        "number": "",
+        "boolean": "",
+        "repository": "",
+        "variableName": "",
+        "packageId": "",
+        "packageName": "",
+        "iteratorId": "",
+        "iteratorName": "",
+        "conditionalId": "",
+        "conditionalName": "",
+        "list": [],
+        "dictionary": [],
+        "exceptionName": "",
+        "thumbnailMetadataPath": "",
+        "screenshotMetadataPath": "",
+        "properties": [],
+        "triggerName": "",
+        "formElementId": "",
+        "formElementType": "",
+        "formInstanceId": "",
+        "queueName": "",
+        "taskbotSelf": false,
+        "variableMapFilter": [],
+        "sessionTarget": "NONE",
+        "securelyRecorded": false
+      },
+      "attributes": [],
+      "operator": "NONE"
+    }],
+    "children": [],
+    "branches": [],
+    "disabled": false,
+    "returns": {
     }
-  ],
-  "variables": [
-    {
-      "name": "prompt-assignment",
-      "description": "A variable you can use for assignments",
-      "type": "STRING",
-      "subtype": "UNDEFINED",
-      "input": false,
-      "output": false
-    }
-  ],
-  "dependencies": [],
-  "packages": [
-    {
-		"name":"MessageBox",
-      	"version": "3.4.0-20220416-233919"
-    }
-  ]
+  }],
+  "variables": [{
+    "key": "",
+    "name": "prompt-assignment",
+    "description": "A variable you can use for assignments",
+    "type": "STRING",
+    "subtype": "UNDEFINED",
+    "input": false,
+    "output": false,
+    "workItem": false,
+    "schema": [],
+    "sessionType": ""
+  }],
+  "packages": [{
+    "id": "",
+    "name": "MessageBox",
+    "version": "3.5.0-20221223-065722"
+  }],
+  "triggers": [],
+  "workItemTemplateName": ""
 }
