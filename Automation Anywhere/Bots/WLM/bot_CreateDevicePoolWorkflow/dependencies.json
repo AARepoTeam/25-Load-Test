@@ -1,0 +1,1 @@
+{"path":"Automation Anywhere\\Bots\\WLM\\CreateDevicePoolWorkflow","manualDependencies":[],"scannedDependencies":["Automation Anywhere\\Bots\\WLM\\CreateDevicePool1","Automation Anywhere\\Bots\\WLM\\GenericSearch","Automation Anywhere\\Bots\\WLM\\Login to CR","Automation Anywhere\\Bots\\WLM\\LogoutBot","Automation Anywhere\\Bots\\WLM\\ReadInputs"]}
