@@ -1,1 +1,1 @@
-{"path":"Automation Anywhere\\Bots\\A-Folder\\high-violation","manualDependencies":[],"scannedDependencies":[]}
+{"path":"Automation Anywhere\\Bots\\A-Folder\\high-violation","manualDependencies":[],"scannedDependencies":["Automation Anywhere\\Bots\\B-Folder\\child-A"]}
