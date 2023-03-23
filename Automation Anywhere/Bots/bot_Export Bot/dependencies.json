@@ -1,1 +1,1 @@
-{"path":"Automation Anywhere\\Bots\\Export Bot","manualDependencies":[],"scannedDependencies":[]}
+{"path":"Automation Anywhere\\Bots\\Export Bot","manualDependencies":["Automation Anywhere\\Bots\\t1.txt"],"scannedDependencies":["Automation Anywhere\\Bots\\Book1.xlsx"]}
