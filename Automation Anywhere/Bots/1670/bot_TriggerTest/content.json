@@ -1,0 +1,101 @@
+{
+    "triggers": [
+      {
+        "uid": "4147c804-b8c2-4e81-be46-c55ed344594c",
+        "triggerName": "FileFolderTrigger",
+        "packageName": "FileFolderTrigger",
+        "disabled": false,
+        "attributes": [
+          {
+            "name": "file",
+            "value": {
+              "type": "FILE",
+              "string": "file:///J:/Programacion/Learn/AA/Misc/start.txt"
+            }
+          },
+          {
+            "name": "action",
+            "value": {
+              "type": "STRING",
+              "string": "modified"
+            }
+          }
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "uid": "600dea46-5fff-4410-8f17-841d3f10d4c4",
+        "commandName": "logToFile",
+        "packageName": "LogToFile",
+        "disabled": false,
+        "attributes": [
+          {
+            "name": "filePath",
+            "value": {
+              "type": "FILE",
+              "string": "file:///J:/Programacion/Learn/AA/Misc/log.txt"
+            }
+          },
+          {
+            "name": "logContent",
+            "value": {
+              "type": "STRING",
+              "string": "Log Triggered!"
+            }
+          },
+          {
+            "name": "appendTimestamp",
+            "value": {
+              "type": "BOOLEAN",
+              "boolean": true
+            }
+          },
+          {
+            "name": "logOption",
+            "value": {
+              "type": "STRING",
+              "string": "APPEND_FILE"
+            }
+          },
+          {
+            "name": "encodingValue",
+            "value": {
+              "type": "STRING",
+              "string": "ANSI"
+            }
+          }
+        ]
+      }
+    ],
+    "variables": [
+      {
+        "name": "prompt-assignment",
+        "description": "A variable you can use for assignments",
+        "type": "STRING",
+        "subtype": "UNDEFINED",
+        "readOnly": false,
+        "input": false,
+        "output": false
+      }
+    ],
+    "breakpoints": [],
+    "packages": [
+      {
+        "name": "FileFolderTrigger",
+        "version": "1.1.0-20211103-165938"
+      },
+      {
+        "name": "LogToFile",
+        "version": "3.2.0-20211011-141811"
+      }
+    ],
+    "migrationJournalReviewIds": [],
+    "workItemTemplateName": null,
+    "properties": {
+      "botCodeVersion": "2",
+      "improvedNumberSupport": true,
+      "timeout": "0s",
+      "automationPriority": "PRIORITY_MEDIUM"
+    }
+  }
