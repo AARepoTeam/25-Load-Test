@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<ProcessInfo>
+		<ProcessName>AR_Cash_App_EFT</ProcessName>	
+</ProcessInfo>
+<MailId>
+	<SMEMailId>RPADBOT05@asahi.com.au</SMEMailId>
+	<MangMailId>mahendra.nalamothu@asahi.com</MangMailId>
+	<APBCCMailId>mahendra.nalamothu@asahi.com</APBCCMailId>
+	<ALBCCMailId>mahendra.nalamothu@asahi.com</ALBCCMailId>
+	<SendErrorMailTo>mahendra.nalamothu@asahi.com</SendErrorMailTo>
+ 	<BOTMailBoxId>mahendra.nalamothu@asahi.com</BOTMailBoxId>
+</MailId>
+<DynamicsExeLink>C:\Program Files (x86)\Microsoft Dynamics AX\40\Client\Bin\Ax32.exe -regconfig=\\sapl.net.au\netlogon\Dynamics\NZ\AXTest64.axc</DynamicsExeLink>
+<SAPExeLink>C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplogon.exe</SAPExeLink>
+<SAPInstance>400- Schweppes - ECC - DEV</SAPInstance>
+<SAPClient>603</SAPClient>
+<SharedPath>\\aa-dev-sofs\aa-dev-sofs\Asahi RPA\ARCash_APP_EFT\</SharedPath>
+
+<ShortDelay>2</ShortDelay>
+<MediumDelay>3</MediumDelay>
+<LongDelay>5</LongDelay>
+
+<CUBPBAutoReplyMessage>Hi,
+
+Please below are the details
+
+</CUBPBAutoReplyMessage>
+<CUBPBAutoReplyMessage>Hi,
+
+Please below are the details
+
+</CUBPBAutoReplyMessage>
+
+
+
+</configuration>
