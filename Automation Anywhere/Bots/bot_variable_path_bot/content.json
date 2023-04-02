@@ -1,0 +1,131 @@
+{
+  "triggers": [],
+  "nodes": [
+    {
+      "uid": "d3f97658-8824-4630-9de1-848c87bd54dd",
+      "commandName": "copyFiles",
+      "packageName": "File",
+      "disabled": false,
+      "attributes": [
+        {
+          "name": "sourceFilePath",
+          "value": {
+            "type": "FILE",
+            "expression": "file://$filePathOrigin$"
+          }
+        },
+        {
+          "name": "destinationPath",
+          "value": {
+            "type": "STRING",
+            "expression": "$filePathDestination$"
+          }
+        },
+        {
+          "name": "isOverwrite",
+          "value": {
+            "type": "BOOLEAN",
+            "boolean": true
+          }
+        },
+        {
+          "name": "isSize",
+          "value": {
+            "type": "BOOLEAN",
+            "boolean": false
+          }
+        },
+        {
+          "name": "isDate",
+          "value": {
+            "type": "BOOLEAN",
+            "boolean": false
+          }
+        }
+      ]
+    },
+    {
+      "uid": "6588b09d-6b72-400b-8fb5-e92b7ccc1a1f",
+      "commandName": "DownloadBot",
+      "packageName": "BotApis",
+      "disabled": false,
+      "attributes": [
+        {
+          "name": "localDownloadPath",
+          "value": {
+            "type": "STRING",
+            "string": "J:\\Programacion\\Learn\\AA\\Misc\\CS-25350"
+          }
+        },
+        {
+          "name": "crFullyQualifiedBotName",
+          "value": {
+            "type": "STRING",
+            "string": "\\Bots\\variable_path_bot"
+          }
+        }
+      ]
+    }
+  ],
+  "variables": [
+    {
+      "type": "NUMBER",
+      "subtype": "UNDEFINED",
+      "readOnly": false,
+      "input": false,
+      "output": false,
+      "name": "SampleNumber"
+    },
+    {
+      "type": "STRING",
+      "subtype": "UNDEFINED",
+      "readOnly": false,
+      "input": false,
+      "output": false,
+      "name": "SampleString"
+    },
+    {
+      "name": "filePathOrigin",
+      "description": "",
+      "type": "STRING",
+      "readOnly": false,
+      "input": false,
+      "output": false,
+      "defaultValue": {
+        "type": "STRING",
+        "string": "J:\\RPA\\MESAP\\Bonneuil\\F100\\2022\\05\\20220502_085133\\IF_F500_04_2022_GLV"
+      }
+    },
+    {
+      "name": "filePathDestination",
+      "description": "",
+      "type": "STRING",
+      "readOnly": false,
+      "input": false,
+      "output": false,
+      "defaultValue": {
+        "type": "STRING",
+        "string": "J:\\RPA\\MESAP\\Bonneuil\\F100\\2022\\05\\20220502_085133\\IF_F500_04_2022_GLV_copy"
+      }
+    }
+  ],
+  "breakpoints": [],
+  "packages": [
+    {
+      "name": "BotApis",
+      "version": "2.1.0-20200917-140607"
+    },
+    {
+      "name": "File",
+      "version": "6.2.0-20220511-194420"
+    }
+  ],
+  "migrationJournalReviewIds": [],
+  "workItemTemplateName": null,
+  "properties": {
+    "botCodeVersion": "2",
+    "improvedNumberSupport": true,
+    "timeout": "0s",
+    "automationPriority": "PRIORITY_MEDIUM"
+  }
+}
