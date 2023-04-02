@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Environments>
+	<ProcessInfo>
+		<ProcessName>AR_EFT</ProcessName>	
+	</ProcessInfo>
+	<DynamicsURL>C:\Program Files (x86)\Microsoft Dynamics AX\40\Client\Bin\Ax32.exe -regconfig=\\sapl.net.au\netlogon\Dynamics\AU\64IDA_AX40_PRD.axc</DynamicsURL>
+	<SharedPath>\\aa-dev-sofs\aa-dev-sofs\Asahi RPA\ARCash_APP_EFT</SharedPath>
+	<DynamicsInput>[SharedPath]\Dynamics\Input</DynamicsInput>
+	<DynamicsOutput>[SharedPath]\Dynamics\Output</DynamicsOutput>
+	<DynamicsProcessing>[SharedPath]\Dynamics\Processing</DynamicsProcessing>
+    <DynamicsUnprocessed>[SharedPath]\Dynamics\Unprocessed</DynamicsUnprocessed>
+    <Tolerance>0.05</Tolerance>
+     <Sheet>Transactions</Sheet>  
+     <DynamicsMachine>wabrp004</DynamicsMachine>
+      <SAPMachine>wabrp004</SAPMachine>
+      
+      
+    <SAPExeLink>C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplogon.exe</SAPExeLink>
+    <SAPInstance>200 - Schweppes - ECC - Quality</SAPInstance>
+    <SAPClient>603</SAPClient>
+	<SAPTcode1>FEBA</SAPTcode1>
+    <SAPTcode2>VL03N</SAPTcode2>
+	<SAPTcode3>FBL5N</SAPTcode3>
+    <SAPTcode4>VF03</SAPTcode4>  
+    <SAPDocNoExceptionList>9003,9004</SAPDocNoExceptionList>    
+     
+    <SAPInputFolder>\\aa-dev-sofs\aa-dev-sofs\Asahi RPA\ARCash_APP_EFT\SAP\Input</SAPInputFolder>
+    <SAPOutputFolder>\\aa-dev-sofs\aa-dev-sofs\Asahi RPA\ARCash_APP_EFT\SAP\Output</SAPOutputFolder>
+    <SAPProcessingFolder>\\aa-dev-sofs\aa-dev-sofs\Asahi RPA\ARCash_APP_EFT\SAP\Processing</SAPProcessingFolder> 
+    <SAPUnprocessedFolder>\\aa-dev-sofs\aa-dev-sofs\Asahi RPA\ARCash_APP_EFT\SAP\Unprocessed</SAPUnprocessedFolder> 
+      
+
+
+	<MailId>
+      		<DynamicsSuccessMailId>RPAPBOT04@asahi.com.au</DynamicsSuccessMailId>
+      		<DynamicsErrorMailId>RPAPBOT04@asahi.com.au</DynamicsErrorMailId>
+      		<DynamicsSubject>AR_EFT_DynamicProcess BOT Executed Successfully</DynamicsSubject>
+      		<DynamicsMailMessage>
+Good Day!
+[LineBreak][LineBreak]
+AR_EFT_DynamicProcess BOT Executed Successfully
+[LineBreak][LineBreak]
+For Journal#[Journal] - [Date]
+[LineBreak][LineBreak]
+OutputFilePath: [OutputFile]
+[LineBreak][LineBreak]              
+Thanks,[LineBreak]
+EFT BOT
+			</DynamicsMailMessage>
+
+<SAPSuccessMailId>RPAPBOT04@asahi.com.au</SAPSuccessMailId>
+<SAPErrorMailId>RPAPBOT04@asahi.com.au</SAPErrorMailId>
+<SAPMailSubject>S178A - AR EFT SAP Process BOT Run Completed</SAPMailSubject>
+<SAPMailSubjectMissingInput>S178A - AR EFT SAP Process BOT Run - Bank Statement misisng</SAPMailSubjectMissingInput>
+<SAPMailMessage>
+Good Day!
+[LineBreak][LineBreak]
+S178A - AR EFT SAP Process BOT run completed. Please find below is the output file location:-
+[LineBreak][LineBreak]
+[OutputFileFolder]
+[LineBreak][LineBreak]            
+Thanks,[LineBreak]
+EFT BOT
+</SAPMailMessage>       
+<SAPMailMessageMissingInput>
+Good Day!
+[LineBreak][LineBreak]
+S178A - AR EFT SAP Process BOT run completed without processing any bank statement as file is missing in the input folder.
+[LineBreak][LineBreak]        
+Thanks,[LineBreak]
+EFT BOT
+</SAPMailMessageMissingInput>
+		
+	</MailId>
+	<Retry>3</Retry>
+	<Delays>
+		<ShortDelay>1</ShortDelay>
+		<MediumDelay>2</MediumDelay>
+		<LongDelay>3</LongDelay>
+	</Delays>
+	<Constant>
+		<Count>0</Count>
+		<Loop>0</Loop>
+		<RecLoop>10</RecLoop>
+	</Constant>
+	<Script>
+		<Run>ExtractInvoiceNoOrAccountNo</Run>
+	</Script>
+	</Environments>
+</Configuration>
