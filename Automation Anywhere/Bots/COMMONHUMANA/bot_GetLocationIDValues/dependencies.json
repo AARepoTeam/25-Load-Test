@@ -1,1 +1,1 @@
-{"path":"Automation Anywhere\\Bots\\COMMONHUMANA\\GetLocationIDValues","manualDependencies":[],"scannedDependencies":[]}
+{"path":"Automation Anywhere\\Bots\\COMMONHUMANA\\GetLocationIDValues","manualDependencies":[],"scannedDependencies":["Automation Anywhere\\Bots\\COMMONHUMANA\\TestBot"]}
