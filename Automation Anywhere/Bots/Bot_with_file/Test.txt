@@ -1,0 +1,34 @@
+waht is the difference between
+wldata.properties
+and
+wlmdataAD.properties
+
+
+checkin
+and checkout
+branch creation
+
+
+Oralce Properties
+SQL properties
+
+do we need to change the licesne file?
+
+=====================
+create a branch
+chekout latest code into that branch
+modify and checkin
+approve
+fail what next
+pass waht next
+=======================
+where we need to modify the URL
+which is pom.xml file for sanity
+============================
+links for Devsanity
+and links for PR sanity
+=========================
+
+
+
+
