@@ -1,0 +1,1 @@
+{"path":"Automation Anywhere\\Bots\\circular-dependencies\\A-Bot","manualDependencies":["Automation Anywhere\\Bots\\circular-dependencies\\B-Bot"],"scannedDependencies":["Automation Anywhere\\Bots\\circular-dependencies\\C-Bot"]}
