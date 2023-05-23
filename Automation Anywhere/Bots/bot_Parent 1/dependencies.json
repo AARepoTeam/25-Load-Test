@@ -1,0 +1,1 @@
+{"path":"Automation Anywhere\\Bots\\Parent 1","manualDependencies":["Automation Anywhere\\Bots\\A-taskbot","Automation Anywhere\\Bots\\DD-files\\sample.xml","Automation Anywhere\\Bots\\aiSense"],"scannedDependencies":["Automation Anywhere\\Bots\\child 1"]}
