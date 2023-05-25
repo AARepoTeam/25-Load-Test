@@ -1,1 +1,1 @@
-{"path":"Automation Anywhere\\Bots\\version_check\\c","manualDependencies":[],"scannedDependencies":[]}
+{"path":"Automation Anywhere\\Bots\\version_check\\c","manualDependencies":[],"scannedDependencies":["Automation Anywhere\\Bots\\version_check\\d"]}
