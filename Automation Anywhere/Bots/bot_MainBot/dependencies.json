@@ -1,1 +1,1 @@
-{"path":"Automation Anywhere\\Bots\\MainBot","manualDependencies":[],"scannedDependencies":[],"metadataDependencies":[]}
+{"path":"Automation Anywhere\\Bots\\MainBot","manualDependencies":[],"scannedDependencies":["Automation Anywhere\\Bots\\NewFolder123\\newsubbot"],"metadataDependencies":[]}
