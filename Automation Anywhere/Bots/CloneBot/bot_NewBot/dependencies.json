@@ -1,1 +1,1 @@
-{"path":"Automation Anywhere\\Bots\\CloneBot\\NewBot","manualDependencies":[],"scannedDependencies":[],"metadataDependencies":[]}
+{"path":"Automation Anywhere\\Bots\\CloneBot\\NewBot","manualDependencies":[],"scannedDependencies":["Automation Anywhere\\Bots\\CloneBot\\TextFile\\Sample_Test.txt"],"metadataDependencies":[]}
