@@ -1,1 +1,1 @@
-{"path":"Automation Anywhere\\Bots\\CancelCheckout\\C","manualDependencies":["Automation Anywhere\\Bots\\CancelCheckout\\dummytext.txt"],"scannedDependencies":["Automation Anywhere\\Bots\\CancelCheckout\\A"],"metadataDependencies":[]}
+{"path":"Automation Anywhere\\Bots\\CancelCheckout\\C","manualDependencies":["Automation Anywhere\\Bots\\CancelCheckout\\dummypdf.pdf","Automation Anywhere\\Bots\\CancelCheckout\\dummytext.txt"],"scannedDependencies":["Automation Anywhere\\Bots\\CancelCheckout\\A","Automation Anywhere\\Bots\\CancelCheckout\\B"],"metadataDependencies":[]}
